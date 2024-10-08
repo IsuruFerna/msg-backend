@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class MessageListener {
 
     @Autowired
-    SimpMessagingTemplate template;
+    private SimpMessagingTemplate template;
 
     @KafkaListener(topics = "topic-message", groupId = "group-message")
     public void listen(Message message) {

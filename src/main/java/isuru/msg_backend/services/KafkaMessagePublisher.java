@@ -29,4 +29,20 @@ public class KafkaMessagePublisher {
             System.out.println("ERROR: " + ex.getMessage());
         }
     }
+
+    public void sendMessageToUser(Message message, String userTopic) {
+        try {
+            CompletableFuture<SendResult<String, Object>> future = template.send(userTopic, message);
+            future.whenComplete((result, ex) -> {
+
+                if(ex == null) {
+                    System.out.println("Sent message= [topic: " + userTopic + " message: " + message.toString() + "] with offset=[" + result.getRecordMetadata().offset() + "]");
+                } else {
+                    System.out.println("Unable to send message= [topic: " + userTopic + " message: "  + message.toString() + "] due to : " + ex.getMessage());
+                }
+            });
+        } catch (Exception ex) {
+            System.out.println("ERROR: " + ex.getMessage());
+        }
+    }
 }
