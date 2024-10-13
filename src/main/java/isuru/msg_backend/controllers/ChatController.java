@@ -1,6 +1,7 @@
 package isuru.msg_backend.controllers;
 
 import isuru.msg_backend.entities.Message;
+import isuru.msg_backend.entities.User;
 import isuru.msg_backend.services.KafkaMessagePublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -63,8 +65,9 @@ public class ChatController {
 
     @MessageMapping("/sendMessageTo")
     @SendTo("/topic/private")
-    public Message broadcastPrivateMessage(@Payload Message message) {
+    public Message broadcastPrivateMessage(@Payload Message message, @AuthenticationPrincipal User currentUser) {
         System.out.println("!!!!!!!!!!!!!!!!!!sending private msg!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
 
         // creating unique topic for both receiver and sender
         // TODO: update with uuids

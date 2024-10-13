@@ -23,4 +23,5 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new NotFoundException("Username: " + username + " does not exists!"));
     }
+
 }

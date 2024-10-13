@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -48,7 +49,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         String path = request.getServletPath();
 
         return pathMatcher.match("/auth/**", request.getServletPath())
-                || pathMatcher.match("/chat/**", request.getServletPath())
+                || pathMatcher.match("/ws-chat/**", request.getServletPath())
                 || path.startsWith("/v3/api-docs")
                 || path.startsWith("/swagger-ui");
     }
