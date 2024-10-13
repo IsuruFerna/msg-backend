@@ -20,4 +20,7 @@ public class UserService {
         return userRepository.findByEmail(email).orElseThrow(() -> new NotFoundException("Email: " + email + " does not exists!"));
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new NotFoundException("Username: " + username + " does not exists!"));
+    }
 }

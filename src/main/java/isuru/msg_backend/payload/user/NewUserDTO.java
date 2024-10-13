@@ -1,4 +1,4 @@
-package isuru.msg_backend.payload;
+package isuru.msg_backend.payload.user;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;

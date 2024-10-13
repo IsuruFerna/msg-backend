@@ -2,10 +2,10 @@ package isuru.msg_backend.controllers;
 
 import isuru.msg_backend.entities.User;
 import isuru.msg_backend.exceptions.BadRequestException;
-import isuru.msg_backend.payload.NewUserDTO;
-import isuru.msg_backend.payload.NewUserResponseDTO;
-import isuru.msg_backend.payload.UserLoginDTO;
-import isuru.msg_backend.payload.UserLoginResponseDTO;
+import isuru.msg_backend.payload.user.NewUserDTO;
+import isuru.msg_backend.payload.user.NewUserResponseDTO;
+import isuru.msg_backend.payload.user.UserLoginDTO;
+import isuru.msg_backend.payload.user.UserLoginResponseDTO;
 import isuru.msg_backend.services.AuthService;
 import isuru.msg_backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
